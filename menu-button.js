@@ -7,12 +7,12 @@
     this.button = button;
     
     // Add (initial) button semantics
-    this.button.setAttribute('aria-haspopup', 'true');
-    this.button.setAttribute('aria-expanded', 'false');
+    this.button.setAttribute('aria-haspopup', true);
+    this.button.setAttribute('aria-expanded', false);
     
     // Get the menu
     this.menuId = this.button.getAttribute('data-opens-menu');
-    this.menu = document.getElementById(this.menuId) || false;
+    this.menu = document.getElementById(this.menuId);
     
     // If the menu doesn't exist
     // exit with an error referencing the missing
@@ -93,22 +93,26 @@
   
   // Open method
   MenuButton.prototype.open = function () {
-    this.button.setAttribute('aria-expanded', 'true');
+    this.button.setAttribute('aria-expanded', true);
     this.menu.hidden = false;
     this.menuItems[0].focus();
+    
+    return this;
   };
   
   // Close method
   MenuButton.prototype.close = function () {
-    this.button.setAttribute('aria-expanded', 'false');
+    this.button.setAttribute('aria-expanded', false);
     this.menu.hidden = true;
+
     return this;
   };
   
   // Toggle method
   MenuButton.prototype.toggle = function () {
     let expanded = this.button.getAttribute('aria-expanded') === 'true';
-    expanded ? this.close() : this.open();
+
+    return expanded ? this.close() : this.open();
   };
   
   // Export MenuButton
