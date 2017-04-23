@@ -79,3 +79,18 @@ const exampleBtn = document.querySelector('[data-opens-menu]');
 // Make it a menu button
 const exampleMenuBtn = new MenuButton(exampleBtn);
 ```
+
+### Opening and closing by script
+
+You can open and close the menu via the original node (`exampleBtn` from the initialization above).
+
+```js
+// Open
+exampleBtn.open();
+
+// Close
+exampleBtn.close();
+
+// Toggle
+exampleBtn.toggle();
+```
