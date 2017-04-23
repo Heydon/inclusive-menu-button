@@ -82,15 +82,15 @@ const exampleMenuBtn = new MenuButton(exampleBtn);
 
 ### Opening and closing by script
 
-You can open and close the menu via the original node (`exampleBtn` from the initialization above).
+You can open and close the menu programmatically.
 
 ```js
 // Open
-exampleBtn.open();
+exampleMenuBtn.open();
 
 // Close
-exampleBtn.close();
+exampleMenuBtn.close();
 
 // Toggle
-exampleBtn.toggle();
+exampleMenuBtn.toggle();
 ```
