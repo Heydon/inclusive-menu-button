@@ -12,7 +12,7 @@
     
     // Get the menu
     this.menuId = this.button.getAttribute('data-opens-menu');
-    this.menu = document.getElementById(this.menuId) || false;
+    this.menu = document.getElementById(this.menuId);
     
     // If the menu doesn't exist
     // exit with an error referencing the missing
