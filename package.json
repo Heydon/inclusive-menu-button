@@ -4,7 +4,8 @@
   "description": "A menu button module that implements the correct ARIA semantics and keyboard behavior.",
   "main": "menu-button.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard *.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Heydon/inclusive-menu-button/issues"
   },
-  "homepage": "https://github.com/Heydon/inclusive-menu-button#readme"
+  "homepage": "https://github.com/Heydon/inclusive-menu-button#readme",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
 }
