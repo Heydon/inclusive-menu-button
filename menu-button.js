@@ -7,8 +7,8 @@
     this.button = button;
     
     // Add (initial) button semantics
-    this.button.setAttribute('aria-haspopup', 'true');
-    this.button.setAttribute('aria-expanded', 'false');
+    this.button.setAttribute('aria-haspopup', true);
+    this.button.setAttribute('aria-expanded', false);
     
     // Get the menu
     this.menuId = this.button.getAttribute('data-opens-menu');
@@ -93,14 +93,14 @@
   
   // Open method
   MenuButton.prototype.open = function () {
-    this.button.setAttribute('aria-expanded', 'true');
+    this.button.setAttribute('aria-expanded', true);
     this.menu.hidden = false;
     this.menuItems[0].focus();
   };
   
   // Close method
   MenuButton.prototype.close = function () {
-    this.button.setAttribute('aria-expanded', 'false');
+    this.button.setAttribute('aria-expanded', false);
     this.menu.hidden = true;
     return this;
   };
