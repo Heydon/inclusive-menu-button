@@ -1,0 +1,36 @@
+[data-inclusive-menu] {
+  position: relative;
+  display: inline-block;
+}
+
+[data-opens-menu], 
+[data-inclusive-menu] [role="menuitem"] {
+  line-height: 1;
+  text-align: left;
+  background: black;
+  border: 0;
+  color: #fff;
+  padding: 0.33rem 0.5rem;
+}
+
+[data-opens-menu]:focus, 
+[data-inclusive-menu] [role="menuitem"]:focus {
+  outline: 0.25rem solid yellow;
+}
+
+[data-inclusive-menu] [role="menu"] {
+  position: absolute;
+  left: 0;
+}
+
+[data-inclusive-menu] [data-menu-origin="right"] {
+  left: auto;
+  right: 0;
+}
+
+[data-inclusive-menu] [role="menuitem"] {
+  display: block;
+  min-width: 100%;
+  margin-top: 0.125rem;
+  white-space: nowrap;
+}
