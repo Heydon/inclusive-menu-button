@@ -20,10 +20,10 @@ In the following example, three menu items are provided.
 </div>
 ```
 
-* The parent element must take `data-inclusive-menu`
-* `data-opens-menu` takes a value that must match the menu element's `id`. In this case, it is `difficulty`
+* The parent element must take `data-inclusive-menu`.
+* `data-opens-menu` takes a value that must match the menu element's `id`. In this case, it is `difficulty`.
 * `data-menu-origin` defines from which side of the button the menu will grow. Any value but "right" will mean it grows from the left.
-* The menu items must be sibling buttons. The script adds the `menuitem` role (as well as the `menu` role to the parent menu element)
+* The menu items must be sibling buttons. The script adds the `menuitem` role (as well as the `menu` role to the parent menu element).
 
 ## CSS
 
