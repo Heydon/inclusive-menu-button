@@ -96,19 +96,23 @@
     this.button.setAttribute('aria-expanded', 'true');
     this.menu.hidden = false;
     this.menuItems[0].focus();
+    
+    return this;
   };
   
   // Close method
   MenuButton.prototype.close = function () {
     this.button.setAttribute('aria-expanded', 'false');
     this.menu.hidden = true;
+
     return this;
   };
   
   // Toggle method
   MenuButton.prototype.toggle = function () {
     let expanded = this.button.getAttribute('aria-expanded') === 'true';
-    expanded ? this.close() : this.open();
+
+    return expanded ? this.close() : this.open();
   };
   
   // Export MenuButton
