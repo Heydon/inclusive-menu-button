@@ -126,7 +126,3 @@
     global.MenuButton = MenuButton
   }
 }(this))
-
-const exampleBtn = document.querySelector('[data-opens-menu]');
-
-const exampleMenuBtn = new MenuButton(exampleBtn);
