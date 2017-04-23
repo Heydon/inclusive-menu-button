@@ -35,7 +35,7 @@
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
-    Array.prototype.forEach.call(this.menuItems, menuItem => {
+    Array.prototype.forEach.call(this.menuItems, function(menuItem) {
       // Add menu item semantics
       menuItem.setAttribute('role', 'menuitem')
 
@@ -43,7 +43,7 @@
       menuItem.setAttribute('tabindex', '-1')
 
       // Handle key presses for menuItem
-      menuItem.addEventListener('keydown', e => {
+      menuItem.addEventListener('keydown', function(e) {
         // Go to next/previous item if it exists
         // or loop around
         let adjacent
@@ -66,21 +66,21 @@
         if (e.keyCode === 27) {
           this.button.focus()
         }
-      })
+      }.bind(this))
 
-      menuItem.addEventListener('click', () => {
+      menuItem.addEventListener('click', function(e) {
         this.close()
         this.button.focus()
-      })
-    })
+      }.bind(this))
+    }.bind(this))
 
     // Handle button click
-    this.button.addEventListener('click', () => {
+    this.button.addEventListener('click', function() {
       this.toggle()
-    })
+    }.bind(this))
 
     // Also toggle on keydown
-    this.button.addEventListener('keydown', e => {
+    this.button.addEventListener('keydown', function(e) {
       if (e.keyCode === 40) {
         if (this.menu.hidden) {
           this.toggle()
@@ -88,7 +88,7 @@
           this.firstItem.focus()
         }
       }
-    })
+    }.bind(this))
   }
 
   // Open method
@@ -111,7 +111,6 @@
   // Toggle method
   MenuButton.prototype.toggle = function () {
     let expanded = this.button.getAttribute('aria-expanded') === 'true'
-
     return expanded ? this.close() : this.open()
   }
 
@@ -127,3 +126,7 @@
     global.MenuButton = MenuButton
   }
 }(this))
+
+const exampleBtn = document.querySelector('[data-opens-menu]');
+
+const exampleMenuBtn = new MenuButton(exampleBtn);

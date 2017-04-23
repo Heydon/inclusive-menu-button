@@ -8,21 +8,21 @@ In the following example, three menu items are provided.
 
 ```html
 <div data-inclusive-menu>
-  <button data-opens-menu="difficulty">
-    Difficulty
-    <span aria-hidden="true">&#x25be;</span>
-  </button>
-  <div id="difficulty" data-menu-origin="left">
-    <button>Easy</button>
-    <button>Medium</button>
-    <button>Incredibly Hard</button>
-  </div>
+ <button data-opens-menu="difficulty">
+   Difficulty
+   <span aria-hidden="true">&#x25be;</span>
+ </button>
+ <div id="difficulty" data-menu-from="left">
+   <button>Easy</button>
+   <button>Medium</button>
+   <button>Incredibly Hard</button>
+ </div>
 </div>
 ```
 
 * The parent element must take `data-inclusive-menu`.
 * `data-opens-menu` takes a value that must match the menu element's `id`. In this case, it is `difficulty`.
-* `data-menu-origin` defines from which side of the button the menu will grow. Any value but "right" will mean it grows from the left.
+* `data-menu-from` defines from which side of the button the menu will grow. Any value but "right" will mean it grows from the left.
 * The menu items must be sibling buttons. The script adds the `menuitem` role (as well as the `menu` role to the parent menu element).
 
 ## CSS
@@ -35,7 +35,7 @@ You must include this CSS for the menu system to work. You may, however, tweak i
   display: inline-block;
 }
 
-[data-opens-menu], 
+[data-opens-menu],
 [data-inclusive-menu] [role="menuitem"] {
   line-height: 1;
   text-align: left;
@@ -45,7 +45,7 @@ You must include this CSS for the menu system to work. You may, however, tweak i
   padding: 0.33rem 0.5rem;
 }
 
-[data-opens-menu]:focus, 
+[data-opens-menu]:focus,
 [data-inclusive-menu] [role="menuitem"]:focus {
   outline: 0.25rem solid yellow;
 }
@@ -73,7 +73,7 @@ You must include this CSS for the menu system to work. You may, however, tweak i
 Initialize the menu button / menu like so:
 
 ```js
-// get a menu button 
+// get a menu button
 const exampleBtn = document.querySelector('[data-opens-menu]');
 
 // Make it a menu button

@@ -1,9 +1,17 @@
+html {
+  font-size: 120%;
+}
+
+* {
+  font-size: inherit;
+}
+
 [data-inclusive-menu] {
   position: relative;
   display: inline-block;
 }
 
-[data-opens-menu], 
+[data-opens-menu],
 [data-inclusive-menu] [role="menuitem"] {
   line-height: 1;
   text-align: left;
@@ -13,7 +21,7 @@
   padding: 0.33rem 0.5rem;
 }
 
-[data-opens-menu]:focus, 
+[data-opens-menu]:focus,
 [data-inclusive-menu] [role="menuitem"]:focus {
   outline: 0.25rem solid yellow;
 }
@@ -23,7 +31,7 @@
   left: 0;
 }
 
-[data-inclusive-menu] [data-menu-origin="right"] {
+[data-inclusive-menu] [data-menu-from="right"] {
   left: auto;
   right: 0;
 }
