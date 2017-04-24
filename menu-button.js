@@ -45,7 +45,8 @@
       menuItem.addEventListener('keydown', function(e) {
         // Go to next/previous item if it exists
         // or loop around
-        let adjacent
+        var adjacent
+
         if (e.keyCode === 40) {
           e.preventDefault()
           adjacent = menuItem.nextElementSibling || this.firstItem
@@ -114,7 +115,8 @@
 
   // Toggle method
   MenuButton.prototype.toggle = function () {
-    let expanded = this.button.getAttribute('aria-expanded') === 'true'
+    var expanded = this.button.getAttribute('aria-expanded') === 'true'
+
     return expanded ? this.close() : this.open()
   }
 
