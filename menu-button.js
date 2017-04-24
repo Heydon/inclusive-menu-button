@@ -34,7 +34,7 @@
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
-    Array.prototype.forEach.call(this.menuItems, function(menuItem) {
+    Array.prototype.forEach.call(this.menuItems, function (menuItem) {
       // Add menu item semantics
       menuItem.setAttribute('role', 'menuitem')
 
@@ -42,7 +42,7 @@
       menuItem.setAttribute('tabindex', '-1')
 
       // Handle key presses for menuItem
-      menuItem.addEventListener('keydown', function(e) {
+      menuItem.addEventListener('keydown', function (e) {
         // Go to next/previous item if it exists
         // or loop around
         var adjacent
@@ -52,6 +52,7 @@
           adjacent = menuItem.nextElementSibling || this.firstItem
           adjacent.focus()
         }
+
         if (e.keyCode === 38) {
           e.preventDefault()
           adjacent = menuItem.previousElementSibling || this.lastItem
@@ -62,25 +63,26 @@
         if (e.keyCode === 27 || e.keyCode === 9) {
           this.toggle()
         }
+
         // If escape, refocus menu button
         if (e.keyCode === 27) {
           this.button.focus()
         }
       }.bind(this))
 
-      menuItem.addEventListener('click', function(e) {
+      menuItem.addEventListener('click', function (e) {
         this.close()
         this.button.focus()
       }.bind(this))
     }.bind(this))
 
     // Handle button click
-    this.button.addEventListener('click', function() {
+    this.button.addEventListener('click', function () {
       this.toggle()
     }.bind(this))
 
     // Also toggle on down arrow
-    this.button.addEventListener('keydown', function(e) {
+    this.button.addEventListener('keydown', function (e) {
       if (e.keyCode === 40) {
         if (this.menu.hidden) {
           this.toggle()
@@ -91,7 +93,7 @@
 
       // close menu on up arrow
       if (e.keyCode === 38) {
-        this.close();
+        this.close()
       }
     }.bind(this))
   }
@@ -132,7 +134,3 @@
     global.MenuButton = MenuButton
   }
 }(this))
-
-const exampleBtn = document.querySelector('[data-opens-menu]');
-
-const exampleMenuBtn = new MenuButton(exampleBtn);
