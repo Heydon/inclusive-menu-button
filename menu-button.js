@@ -20,7 +20,7 @@
     // exit with an error referencing the missing
     // menu's id
     if (!this.menu) {
-      throw Error(`#${this.menuId} menu missing`)
+      throw new Error(`#${this.menuId} menu missing`)
     }
 
     // Add menu semantics
@@ -45,7 +45,7 @@
       menuItem.addEventListener('keydown', function (e) {
         // Go to next/previous item if it exists
         // or loop around
-        let adjacent
+        var adjacent
 
         if (e.keyCode === 40) {
           e.preventDefault()
@@ -117,7 +117,8 @@
 
   // Toggle method
   MenuButton.prototype.toggle = function () {
-    let expanded = this.button.getAttribute('aria-expanded') === 'true'
+    var expanded = this.button.getAttribute('aria-expanded') === 'true'
+
     return expanded ? this.close() : this.open()
   }
 
