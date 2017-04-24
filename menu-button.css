@@ -1,11 +1,3 @@
-html {
-  font-size: 120%;
-}
-
-* {
-  font-size: inherit;
-}
-
 [data-inclusive-menu] {
   position: relative;
   display: inline-block;
@@ -13,17 +5,8 @@ html {
 
 [data-opens-menu],
 [data-inclusive-menu] [role="menuitem"] {
-  line-height: 1;
   text-align: left;
-  background: black;
   border: 0;
-  color: #fff;
-  padding: 0.33rem 0.5rem;
-}
-
-[data-opens-menu]:focus,
-[data-inclusive-menu] [role="menuitem"]:focus {
-  outline: 0.25rem solid yellow;
 }
 
 [data-inclusive-menu] [role="menu"] {
@@ -39,6 +22,5 @@ html {
 [data-inclusive-menu] [role="menuitem"] {
   display: block;
   min-width: 100%;
-  margin-top: 0.125rem;
   white-space: nowrap;
 }
