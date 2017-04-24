@@ -78,7 +78,7 @@
       this.toggle()
     }.bind(this))
 
-    // Also toggle on keydown
+    // Also toggle on down arrow
     this.button.addEventListener('keydown', function(e) {
       if (e.keyCode === 40) {
         if (this.menu.hidden) {
@@ -86,6 +86,11 @@
         } else {
           this.firstItem.focus()
         }
+      }
+
+      // close menu on up arrow
+      if (e.keyCode === 38) {
+        this.close();
       }
     }.bind(this))
   }
@@ -125,3 +130,7 @@
     global.MenuButton = MenuButton
   }
 }(this))
+
+const exampleBtn = document.querySelector('[data-opens-menu]');
+
+const exampleMenuBtn = new MenuButton(exampleBtn);
