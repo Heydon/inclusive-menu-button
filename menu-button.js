@@ -66,6 +66,7 @@
 
         // If escape, refocus menu button
         if (e.keyCode === 27) {
+          e.preventDefault()
           this.button.focus()
         }
       }.bind(this))
