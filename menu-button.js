@@ -20,7 +20,7 @@
     // exit with an error referencing the missing
     // menu's id
     if (!this.menu) {
-      throw Error(`#${this.menuId} menu missing`)
+      throw new Error(`#${this.menuId} menu missing`)
     }
 
     // Add menu semantics
@@ -34,7 +34,7 @@
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
-    Array.prototype.forEach.call(this.menuItems, function(menuItem) {
+    Array.prototype.forEach.call(this.menuItems, function (menuItem) {
       // Add menu item semantics
       menuItem.setAttribute('role', 'menuitem')
 
@@ -42,15 +42,17 @@
       menuItem.setAttribute('tabindex', '-1')
 
       // Handle key presses for menuItem
-      menuItem.addEventListener('keydown', function(e) {
+      menuItem.addEventListener('keydown', function (e) {
         // Go to next/previous item if it exists
         // or loop around
-        let adjacent
+        var adjacent
+
         if (e.keyCode === 40) {
           e.preventDefault()
           adjacent = menuItem.nextElementSibling || this.firstItem
           adjacent.focus()
         }
+
         if (e.keyCode === 38) {
           e.preventDefault()
           adjacent = menuItem.previousElementSibling || this.lastItem
@@ -61,25 +63,26 @@
         if (e.keyCode === 27 || e.keyCode === 9) {
           this.toggle()
         }
+
         // If escape, refocus menu button
         if (e.keyCode === 27) {
           this.button.focus()
         }
       }.bind(this))
 
-      menuItem.addEventListener('click', function(e) {
+      menuItem.addEventListener('click', function (e) {
         this.close()
         this.button.focus()
       }.bind(this))
     }.bind(this))
 
     // Handle button click
-    this.button.addEventListener('click', function() {
+    this.button.addEventListener('click', function () {
       this.toggle()
     }.bind(this))
 
     // Also toggle on down arrow
-    this.button.addEventListener('keydown', function(e) {
+    this.button.addEventListener('keydown', function (e) {
       if (e.keyCode === 40) {
         if (this.menu.hidden) {
           this.toggle()
@@ -90,7 +93,7 @@
 
       // close menu on up arrow
       if (e.keyCode === 38) {
-        this.close();
+        this.close()
       }
     }.bind(this))
   }
@@ -114,7 +117,8 @@
 
   // Toggle method
   MenuButton.prototype.toggle = function () {
-    let expanded = this.button.getAttribute('aria-expanded') === 'true'
+    var expanded = this.button.getAttribute('aria-expanded') === 'true'
+
     return expanded ? this.close() : this.open()
   }
 
@@ -130,7 +134,3 @@
     global.MenuButton = MenuButton
   }
 }(this))
-
-const exampleBtn = document.querySelector('[data-opens-menu]');
-
-const exampleMenuBtn = new MenuButton(exampleBtn);
