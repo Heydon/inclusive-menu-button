@@ -20,7 +20,7 @@
     // exit with an error referencing the missing
     // menu's id
     if (!this.menu) {
-      throw Error(`#${this.menuId} menu missing`)
+      throw new Error(`#${this.menuId} menu missing`)
     }
 
     // Add menu semantics
