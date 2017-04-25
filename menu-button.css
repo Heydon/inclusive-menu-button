@@ -3,7 +3,7 @@
   display: inline-block;
 }
 
-[data-opens-menu],
+[data-inclusive-menu-opens],
 [data-inclusive-menu] [role="menuitem"] {
   text-align: left;
   border: 0;
@@ -14,7 +14,7 @@
   left: 0;
 }
 
-[data-inclusive-menu] [data-menu-from="right"] {
+[data-inclusive-menu] [data-inclusive-menu-from="right"] {
   left: auto;
   right: 0;
 }

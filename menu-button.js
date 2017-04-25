@@ -13,7 +13,7 @@
     this.button.setAttribute('aria-expanded', false)
 
     // Get the menu
-    this.menuId = this.button.getAttribute('data-opens-menu')
+    this.menuId = this.button.getAttribute('data-inclusive-menu-opens')
     this.menu = document.getElementById(this.menuId)
 
     // If the menu doesn't exist
