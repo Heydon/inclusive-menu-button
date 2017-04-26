@@ -5,7 +5,8 @@
   "main": "menu-button.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "standard *.js"
+    "lint": "standard *.js",
+    "uggo": "uglify -s menu-button.js -o menu-button.min.js"
   },
   "repository": {
     "type": "git",
