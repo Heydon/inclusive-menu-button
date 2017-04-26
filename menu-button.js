@@ -20,7 +20,7 @@
     // exit with an error referencing the missing
     // menu's id
     if (!this.menu) {
-      throw new Error(`#${this.menuId} menu missing`)
+      throw new Error('#' + this.menuId + ' menu missing')
     }
 
     // Add menu semantics
@@ -31,6 +31,11 @@
 
     // Get the menu items
     this.menuItems = this.menu.querySelectorAll('button')
+
+    if (this.menuItems.length === 0) {
+      throw new Error('The #' + this.menuId + ' menu has no menu items')
+    }
+
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
