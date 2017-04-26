@@ -1,5 +1,3 @@
-/* global define */
-
 (function (global) {
   'use strict'
 
@@ -77,6 +75,13 @@
       }.bind(this))
 
       menuItem.addEventListener('click', function (e) {
+        // pass data to select method
+        this.select({
+          elem: menuItem,
+          label: menuItem.textContent
+        })
+
+        // close menu and focus menu button
         this.close()
         this.button.focus()
       }.bind(this))
@@ -102,6 +107,10 @@
         this.close()
       }
     }.bind(this))
+
+    // initiate listeners object for public events
+    this._listeners = {}
+
   }
 
   // Open method
@@ -109,6 +118,9 @@
     this.button.setAttribute('aria-expanded', true)
     this.menu.hidden = false
     this.menuItems[0].focus()
+
+    // fire open event
+    this._fire('open')
 
     return this
   }
@@ -118,6 +130,9 @@
     this.button.setAttribute('aria-expanded', false)
     this.menu.hidden = true
 
+    // fire open event
+    this._fire('close')
+
     return this
   }
 
@@ -126,6 +141,31 @@
     var expanded = this.button.getAttribute('aria-expanded') === 'true'
 
     return expanded ? this.close() : this.open()
+  }
+
+  MenuButton.prototype.select = function (data) {
+    // fire open event
+    this._fire('choose', data)
+
+    return this
+  }
+
+  MenuButton.prototype._fire = function (type, data) {
+    var listeners = this._listeners[type] || []
+
+    listeners.forEach(function (listener) {
+      listener(data)
+    })
+  }
+
+  MenuButton.prototype.on = function (type, handler) {
+    if (typeof this._listeners[type] === 'undefined') {
+      this._listeners[type] = []
+    }
+
+    this._listeners[type].push(handler)
+
+    return this
   }
 
   // Export MenuButton
