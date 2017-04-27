@@ -37,12 +37,12 @@
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
-    var focusNext = function(currentItem, startItem) {
+    var focusNext = function (currentItem, startItem) {
       // Determine which item is the startItem (first or last)
-      var goingDown = startItem === this.firstItem ? true : false
+      var goingDown = startItem === this.firstItem
 
       // helper function for getting next legitimate element
-      function move(elem) {
+      function move (elem) {
         return (goingDown ? elem.nextElementSibling : elem.previousElementSibling) || startItem
       }
 
@@ -51,7 +51,7 @@
 
       // if the menuitem is disabled move on
       while (nextItem.disabled) {
-         nextItem = move(nextItem)
+        nextItem = move(nextItem)
       }
 
       // focus the first one that's not disabled
@@ -125,7 +125,6 @@
 
     // initiate listeners object for public events
     this._listeners = {}
-
   }
 
   // Open method
