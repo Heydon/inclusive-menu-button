@@ -103,9 +103,7 @@
     }.bind(this))
 
     // Handle button click
-    this.button.addEventListener('click', function () {
-      this.toggle()
-    }.bind(this))
+    this.button.addEventListener('click', this.toggle.bind(this))
 
     // Also toggle on down arrow
     this.button.addEventListener('keydown', function (e) {
