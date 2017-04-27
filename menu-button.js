@@ -75,11 +75,8 @@
       }.bind(this))
 
       menuItem.addEventListener('click', function (e) {
-        // pass data to select method
-        this.select({
-          elem: menuItem,
-          label: menuItem.textContent
-        })
+        // pass menu item node to select method
+        this.select(menuItem)
 
         // close menu and focus menu button
         this.close()

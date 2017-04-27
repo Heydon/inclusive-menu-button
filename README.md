@@ -27,7 +27,7 @@ In the following example, three menu items are provided.
 
 ## CSS
 
-You must include this CSS for the menu system to work. It is just the bare minimum functional styles. It's recommended you override these in the cascade to customize the appearance.
+You must include this CSS for the menu system to work. It is just the bare minimum functional styling. It's recommended you override these in the cascade to customize the appearance to your liking.
 
 ```css
 [data-inclusive-menu] {
@@ -64,13 +64,13 @@ Initialize the menu button / menu like so:
 
 ```js
 // get a menu button
-const exampleBtn = document.querySelector('[data-opens-menu]');
+const exampleButton = document.querySelector('[data-opens-menu]');
 
 // Make it a menu button
-const exampleMenuBtn = new MenuButton(exampleBtn);
+const exampleMenuButton = new MenuButton(exampleButton);
 ```
 
-### Opening and closing by script
+### API methods
 
 You can open and close the menu programmatically.
 
@@ -83,4 +83,30 @@ exampleMenuBtn.close();
 
 // Toggle
 exampleMenuBtn.toggle();
+```
+
+### Event subscription
+
+You can subscribe to emitted `open`, `close`, and `choose`.
+
+#### `open` and `close` examples
+
+```js
+exampleMenuButton.on('open', function() {
+  console.log('open event fired')
+})
+
+exampleMenuButton.on('close', function() {
+  console.log('close event fired')
+})
+```
+
+#### `choose` example
+
+The `choose` event is passed `choice` which is the chosen menu item's DOM node.
+
+```js
+exampleMenuButton.on('choose', function(choice) {
+  console.log('Chosen menu item: ', choice)
+})
 ```
