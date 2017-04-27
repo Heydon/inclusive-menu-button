@@ -5,7 +5,7 @@
   "main": "menu-button.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "standard *.js",
+    "lint": "standard ./inclusive-menu-button.js",
     "uglify": "uglifyjs inclusive-menu-button.js -o inclusive-menu-button.min.js"
   },
   "repository": {
