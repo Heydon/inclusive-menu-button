@@ -37,6 +37,27 @@
     this.firstItem = this.menuItems[0]
     this.lastItem = this.menuItems[this.menuItems.length - 1]
 
+    var focusNext = function(currentItem, startItem) {
+      // Determine which item is the startItem (first or last)
+      var goingDown = startItem === this.firstItem ? true : false
+
+      // helper function for getting next legitimate element
+      function move(elem) {
+        return (goingDown ? elem.nextElementSibling : elem.previousElementSibling) || startItem
+      }
+
+      // make first move
+      var nextItem = move(currentItem)
+
+      // if the menuitem is disabled move on
+      while (nextItem.disabled) {
+         nextItem = move(nextItem)
+      }
+
+      // focus the first one that's not disabled
+      nextItem.focus()
+    }.bind(this)
+
     Array.prototype.forEach.call(this.menuItems, function (menuItem) {
       // Add menu item semantics
       menuItem.setAttribute('role', 'menuitem')
@@ -48,18 +69,15 @@
       menuItem.addEventListener('keydown', function (e) {
         // Go to next/previous item if it exists
         // or loop around
-        var adjacent
 
         if (e.keyCode === 40) {
           e.preventDefault()
-          adjacent = menuItem.nextElementSibling || this.firstItem
-          adjacent.focus()
+          focusNext(menuItem, this.firstItem)
         }
 
         if (e.keyCode === 38) {
           e.preventDefault()
-          adjacent = menuItem.previousElementSibling || this.lastItem
-          adjacent.focus()
+          focusNext(menuItem, this.lastItem)
         }
 
         // Close on escape or tab
@@ -93,9 +111,9 @@
     this.button.addEventListener('keydown', function (e) {
       if (e.keyCode === 40) {
         if (this.menu.hidden) {
-          this.toggle()
+          this.open()
         } else {
-          this.firstItem.focus()
+          this.menu.querySelector(':not([disabled])').focus()
         }
       }
 
@@ -114,7 +132,7 @@
   MenuButton.prototype.open = function () {
     this.button.setAttribute('aria-expanded', true)
     this.menu.hidden = false
-    this.menuItems[0].focus()
+    this.menu.querySelector(':not([disabled])').focus()
 
     // fire open event
     this._fire('open')
@@ -136,7 +154,6 @@
   // Toggle method
   MenuButton.prototype.toggle = function () {
     var expanded = this.button.getAttribute('aria-expanded') === 'true'
-
     return expanded ? this.close() : this.open()
   }
 
