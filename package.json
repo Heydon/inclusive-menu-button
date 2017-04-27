@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard *.js",
-    "uglify": "uglifyjs menu-button.js -o menu-button.min.js"
+    "uglify": "uglifyjs inclusive-menu-button.js -o inclusive-menu-button.min.js"
   },
   "repository": {
     "type": "git",
