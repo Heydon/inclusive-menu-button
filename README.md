@@ -64,10 +64,10 @@ Initialize the menu button / menu like so:
 
 ```js
 // get a menu button
-const exampleButton = document.querySelector('[data-opens-menu]');
+const exampleButton = document.querySelector('[data-opens-menu]')
 
 // Make it a menu button
-const exampleMenuButton = new MenuButton(exampleButton);
+const exampleMenuButton = new MenuButton(exampleButton)
 ```
 
 ### API methods
@@ -76,37 +76,37 @@ You can open and close the menu programmatically.
 
 ```js
 // Open
-exampleMenuBtn.open();
+exampleMenuBtn.open()
 
 // Close
-exampleMenuBtn.close();
+exampleMenuBtn.close()
 
 // Toggle
-exampleMenuBtn.toggle();
+exampleMenuBtn.toggle()
 ```
 
 ### Event subscription
 
-You can subscribe to emitted `open`, `close`, and `choose`.
+You can subscribe to emitted `open`, `close`, and `choose` events.
 
 #### `open` and `close` examples
 
 ```js
-exampleMenuButton.on('open', function() {
-  console.log('open event fired')
+exampleMenuButton.on('open', function () {
+  // Do something when the menu gets open
 })
 
-exampleMenuButton.on('close', function() {
-  console.log('close event fired')
+exampleMenuButton.on('close', function () {
+  // Do something when the menu gets closed
 })
 ```
 
 #### `choose` example
 
-The `choose` event is passed `choice` which is the chosen menu item's DOM node.
+The `choose` event is passed the chosen item’s DOM node.
 
 ```js
-exampleMenuButton.on('choose', function(choice) {
-  console.log('Chosen menu item: ', choice)
+exampleMenuButton.on('choose', function (choice) {
+  // Do something with `choice`
 })
 ```
