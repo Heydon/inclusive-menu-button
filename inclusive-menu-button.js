@@ -1,3 +1,5 @@
+/* global define */
+
 (function (global) {
   'use strict'
 
