@@ -140,9 +140,9 @@
     return expanded ? this.close() : this.open()
   }
 
-  MenuButton.prototype.select = function (data) {
+  MenuButton.prototype.select = function (choice) {
     // fire open event
-    this._fire('choose', data)
+    this._fire('choose', choice)
 
     return this
   }
