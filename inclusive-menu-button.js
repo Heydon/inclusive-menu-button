@@ -32,7 +32,7 @@
     // Get the menu items
     this.menuItems = this.menu.querySelectorAll('button')
 
-    if (this.menuItems.length === 0) {
+    if (this.menuItems.length < 1) {
       throw new Error('The #' + this.menuId + ' menu has no menu items')
     }
 
@@ -65,7 +65,7 @@
       var active = Array.prototype.filter.call(this.menuItems, function (item) {
         return !item.disabled
       })
-      if (active.length === 0) {
+      if (active.length < 1) {
         this.button.disabled = true
         return
       }

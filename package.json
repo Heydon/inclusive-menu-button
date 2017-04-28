@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard ./inclusive-menu-button.js",
     "uglify": "uglifyjs inclusive-menu-button.js -o inclusive-menu-button.min.js",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint && npm run uglify"
   },
   "repository": {
     "type": "git",
