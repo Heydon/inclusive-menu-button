@@ -61,6 +61,15 @@
     }.bind(this)
 
     Array.prototype.forEach.call(this.menuItems, function (menuItem) {
+      // Disable menu button if all menu items are disabled
+      var active = Array.prototype.filter.call(this.menuItems, function (item) {
+        return !item.disabled
+      })
+      if (active.length === 0) {
+        this.button.disabled = true
+        return
+      }
+
       // Add menu item semantics
       menuItem.setAttribute('role', 'menuitem')
 
