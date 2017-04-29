@@ -190,6 +190,16 @@
     return this
   }
 
+  MenuButton.prototype.off = function (type, handler) {
+    var index = this._listeners[type].indexOf(handler)
+
+    if (index > -1) {
+      this._listeners[type].splice(index, 1)
+    }
+
+    return this
+  }
+
   // Export MenuButton
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = MenuButton
