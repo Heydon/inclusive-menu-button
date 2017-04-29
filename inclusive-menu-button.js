@@ -105,7 +105,7 @@
 
       menuItem.addEventListener('click', function (e) {
         // pass menu item node to select method
-        this.select(menuItem)
+        this.choose(menuItem)
 
         // close menu and focus menu button
         this.close()
