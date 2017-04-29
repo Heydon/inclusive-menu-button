@@ -29,7 +29,7 @@
     // Hide menu initially
     this.menu.hidden = true
 
-    // Get the menu items
+    // Get the menu item buttons
     this.menuItems = this.menu.querySelectorAll('button')
 
     if (this.menuItems.length < 1) {
@@ -165,7 +165,7 @@
     return expanded ? this.close() : this.open()
   }
 
-  MenuButton.prototype.select = function (choice) {
+  MenuButton.prototype.choose = function (choice) {
     // fire open event
     this._fire('choose', choice)
 
