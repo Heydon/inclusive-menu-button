@@ -110,3 +110,11 @@ exampleMenuButton.on('choose', function (choice) {
   // Do something with `choice`
 })
 ```
+
+### Unsubscribing
+
+There is an `off` method included for terminating event listeners.
+
+```js
+exampleMenuButton.off('choose', exampleHandler)
+```
