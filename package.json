@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard ./inclusive-menu-button.js",
     "uglify": "uglifyjs inclusive-menu-button.js -o inclusive-menu-button.min.js",
-    "precommit": "npm run lint && npm run uglify"
+    "extract-version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
+    "add-version": "echo \"/*! inclusive-menu-button $(npm run extract-version --silent) — © Heydon Pickering */\n$(cat inclusive-menu-button.min.js)\" > inclusive-menu-button.min.js",
+    "build": "npm run uglify && npm run add-version",
+    "precommit": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
