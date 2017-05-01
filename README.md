@@ -2,6 +2,12 @@
 
 A **menu button** module that implements the correct ARIA semantics and keyboard behavior.
 
+## Installation
+
+```
+npm i inclusive-menu-button --save
+```
+
 ## Expected markup
 
 In the following example, three menu items are provided.
