@@ -31,9 +31,27 @@ In the following example, three menu items are provided.
 * `data-inclusive-menu-from` defines from which side of the button the menu will grow. Any value but "right" will mean it grows from the left.
 * The menu items must be sibling buttons. The script adds the `menuitem` role (as well as the `menu` role to the parent menu element).
 
+### After initialization
+
+Once you've initialized the menu button, this will be the resulting markup, including all of the necessary ARIA attribution:
+
+```html
+<div data-inclusive-menu>
+ <button data-inclusive-menu-opens="difficulty" aria-haspopup="true" aria-expanded="false">
+   Difficulty
+   <span aria-hidden="true">&#x25be;</span>
+ </button>
+ <div id="difficulty" data-inclusive-menu-from="left" role="menu" hidden>
+   <button role="menuitem" tabindex="-1">Easy</button>
+   <button role="menuitem" tabindex="-1">Medium</button>
+   <button role="menuitem" tabindex="-1">Incredibly Hard</button>
+ </div>
+</div>
+```
+
 ## CSS
 
-You must include this CSS for the menu system to work. It is just the bare minimum functional styling. It's recommended you override these in the cascade to customize the appearance to your liking.
+You must include this styling for the menu system to work. It is just the bare minimum functional CSS. It's recommended you override these in the cascade to customize the appearance to your liking.
 
 ```css
 [data-inclusive-menu] {
@@ -64,7 +82,7 @@ You must include this CSS for the menu system to work. It is just the bare minim
 }
 ```
 
-## Usage
+## Initialization
 
 Initialize the menu button / menu like so:
 
