@@ -4,7 +4,26 @@
   'use strict'
 
   // Constructor
-  function MenuButton (button) {
+  function MenuButton (button, userSettings) {
+    // Error if the userSettings argument isn't an object
+    if (userSettings !== undefined && typeof userSettings !== 'object') {
+      throw new Error('MenuButton\'s second argument is expected as an object or undefined')
+    }
+
+    // The default settings
+    this.settings = {
+      radios: false
+    }
+
+    // Overwrite defaults where they are provided in userSettings
+    if (typeof userSettings === 'object') {
+      for (var setting in userSettings) {
+        if (userSettings.hasOwnProperty(setting)) {
+          this.settings[setting] = userSettings[setting]
+        }
+      }
+    }
+
     // Save a reference to the element
     this.button = button
 
@@ -71,7 +90,11 @@
       }
 
       // Add menu item semantics
-      menuItem.setAttribute('role', 'menuitem')
+      if (this.settings.radios) {
+        menuItem.setAttribute('role', 'menuitemradio')
+      } else {
+        menuItem.setAttribute('role', 'menuitem')
+      }
 
       // Prevent tab focus on menu items
       menuItem.setAttribute('tabindex', '-1')
@@ -166,6 +189,16 @@
   }
 
   MenuButton.prototype.choose = function (choice) {
+    if (this.settings.radios) {
+      // Remove aria-checked from whichever item it's on
+      Array.prototype.forEach.call(this.menuItems, function (menuItem) {
+        menuItem.setAttribute('aria-checked', null)
+      })
+
+      // Set aria-checked="true" on the chosen item
+      choice.setAttribute('aria-checked', 'true')
+    }
+
     // fire open event
     this._fire('choose', choice)
 
