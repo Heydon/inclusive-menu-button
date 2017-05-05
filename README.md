@@ -51,7 +51,7 @@ Once you've initialized the menu button, this will be the resulting markup, incl
 
 ## CSS
 
-You must include this styling for the menu system to work. It is just the bare minimum functional CSS. It's recommended you override these in the cascade to customize the appearance to your liking.
+The following functional styling is provided for the basic layout of an archetypal "dropdown" menu appearance. You can either override and add to these styles in the cascade or remove them altogether and start from scratch.
 
 ```css
 [data-inclusive-menu] {
