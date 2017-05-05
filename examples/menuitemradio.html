@@ -25,17 +25,12 @@
       color: white;
     }
 
-    button:disabled {
-      color: #999;
-      background: #333;
-    }
-
     button:focus {
       outline: none;
       background-color: #3737c8;
     }
 
-    [data-inclusive-menu] [role="menuitem"] {
+    [data-inclusive-menu] [role^="menuitem"] {
       margin-top: 3px;
     }
     </style>
@@ -50,9 +45,9 @@
        <span aria-hidden="true">&#x25be;</span>
      </button>
      <div id="difficulty" data-inclusive-menu-from="left">
-       <button disabled>Easy</button>
+       <button>Easy</button>
        <button>Medium</button>
-       <button disabled>Very Tricky</button>
+       <button>Very Tricky</button>
        <button>Incredibly Hard</button>
        <button>Impossible</button>
      </div>
@@ -61,7 +56,7 @@
     <script>
       // Instantiation
       var exampleButton = document.querySelector('[data-inclusive-menu-opens]')
-      var exampleMenuButton = new MenuButton(exampleButton)
+      var exampleMenuButton = new MenuButton(exampleButton, {radios: true})
 
       // Listen to choose event
       exampleMenuButton.on('choose', function(choice) {

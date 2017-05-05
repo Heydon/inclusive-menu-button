@@ -30,7 +30,7 @@
       background-color: #3737c8;
     }
 
-    [data-inclusive-menu] [role="menuitem"] {
+    [data-inclusive-menu] [role^="menuitem"] {
       margin-top: 3px;
     }
     </style>
@@ -52,7 +52,7 @@
        <button>Impossible</button>
      </div>
     </div>
-    <script src="../inclusive-menu-button.min.js"></script>
+    <script src="../inclusive-menu-button.js"></script>
     <script>
       // Instantiation
       var exampleButton = document.querySelector('[data-inclusive-menu-opens]')
