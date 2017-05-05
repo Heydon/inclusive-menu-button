@@ -24,3 +24,7 @@
   min-width: 100%;
   white-space: nowrap;
 }
+
+[data-inclusive-menu] [role^="menuitem"][aria-checked="true"]::before {
+  content: '\2713\0020';
+}

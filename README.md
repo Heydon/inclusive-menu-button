@@ -60,7 +60,7 @@ The following functional styling is provided for the basic layout of an archetyp
 }
 
 [data-inclusive-menu-opens],
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   text-align: left;
   border: 0;
 }
@@ -75,10 +75,14 @@ The following functional styling is provided for the basic layout of an archetyp
   right: 0;
 }
 
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   display: block;
   min-width: 100%;
   white-space: nowrap;
+}
+
+[data-inclusive-menu] [role^="menuitem"][aria-checked="true"]::before {
+  content: '\2713\0020';
 }
 ```
 
@@ -93,6 +97,17 @@ const exampleButton = document.querySelector('[data-opens-menu]')
 // Make it a menu button
 const exampleMenuButton = new MenuButton(exampleButton)
 ```
+
+### `menuitemradio` example
+
+Sometimes you'd like to persist the selected menu item, using a checked state. In this case, the script should implement `role="menuitemradio"` in place of `role="menuitem"`, and apply `aria-checked="true"` to the most recently chosen item. On initialization, supply `radios: true` to the constructor call:
+
+```js
+// Make it a menu button with menuitemradio buttons
+const exampleMenuButton = new MenuButton(exampleButton, {radios: true})
+```
+
+The basic CSS (see above) prefixes the checked item with a check mark. This declaration can be removed safely and replaced with a different form of indication.
 
 ### API methods
 
@@ -142,3 +157,5 @@ There is an `off` method included for terminating event listeners.
 ```js
 exampleMenuButton.off('choose', exampleHandler)
 ```
+
+## Settings
