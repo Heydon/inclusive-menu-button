@@ -107,6 +107,16 @@ Sometimes you'd like to persist the selected menu item, using a checked state. I
 const exampleMenuButton = new MenuButton(exampleButton, {radios: true})
 ```
 
+If you want to set a default checked item, just do that in the HTML:
+
+```html
+<div id="difficulty" data-inclusive-menu-from="left" role="menu" hidden>
+ <button role="menuitemradio" tabindex="-1">Easy</button>
+ <button role="menuitemradio" aria-checked="true" tabindex="-1">Medium</button>
+ <button role="menuitemradio" tabindex="-1">Incredibly Hard</button>
+</div>
+```
+
 The basic CSS (see above) prefixes the checked item with a check mark. This declaration can be removed safely and replaced with a different form of indication.
 
 ### API methods

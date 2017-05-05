@@ -16,7 +16,7 @@
     }
 
     // Overwrite defaults where they are provided in userSettings
-    if (typeof userSettings === 'object') {
+    if (userSettings) {
       for (var setting in userSettings) {
         if (userSettings.hasOwnProperty(setting)) {
           this.settings[setting] = userSettings[setting]
