@@ -106,7 +106,7 @@ You can supply the constructor with a `checkable` value of 'none' (default), 'on
 
 ```js
 // Make it a menu button with menuitemradio buttons
-const exampleMenuButton = new MenuButton(exampleButton, {checkable: 'one'})
+const exampleMenuButton = new MenuButton(exampleButton, { checkable: 'one' })
 ```
 
 If you want to set default checked items, just do that in the HTML:
