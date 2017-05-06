@@ -160,7 +160,13 @@
   MenuButton.prototype.open = function () {
     this.button.setAttribute('aria-expanded', true)
     this.menu.hidden = false
-    this.menu.querySelector(':not([disabled])').focus()
+
+    // Check the
+    if (this.settings.checkable === 'one' && this.menu.querySelector('[aria-checked="true"]')) {
+      this.menu.querySelector('[aria-checked="true"]').focus()
+    } else {
+      this.menu.querySelector(':not([disabled])').focus()
+    }
 
     // fire open event
     this._fire('open')
