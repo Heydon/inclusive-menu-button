@@ -4,23 +4,18 @@
   'use strict'
 
   // Constructor
-  function MenuButton (button, customSettings) {
-    // Error if the customSettings argument isn't an object
-    if (typeof customSettings !== 'undefined' && typeof customSettings !== 'object') {
-      throw new Error('MenuButton\'s second argument is expected as an object or undefined')
-    }
+  function MenuButton (button, options) {
+    options = options || {}
 
     // The default settings
     this.settings = {
       checkable: 'none'
     }
 
-    // Overwrite defaults where they are provided in customSettings
-    if (customSettings) {
-      for (var setting in customSettings) {
-        if (customSettings.hasOwnProperty(setting)) {
-          this.settings[setting] = customSettings[setting]
-        }
+    // Overwrite defaults where they are provided in options
+    for (var setting in options) {
+      if (options.hasOwnProperty(setting)) {
+        this.settings[setting] = options[setting]
       }
     }
 
