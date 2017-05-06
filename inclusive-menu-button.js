@@ -161,9 +161,12 @@
     this.button.setAttribute('aria-expanded', true)
     this.menu.hidden = false
 
-    // Check the
-    if (this.settings.checkable === 'one' && this.menu.querySelector('[aria-checked="true"]')) {
-      this.menu.querySelector('[aria-checked="true"]').focus()
+    if (this.settings.checkable === 'one') {
+      var checked = this.menu.querySelector('[aria-checked="true"]')
+    }
+    // Check the checked item if using menuitemradio
+    if (checked) {
+      checked.focus()
     } else {
       this.menu.querySelector(':not([disabled])').focus()
     }
