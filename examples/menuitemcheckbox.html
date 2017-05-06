@@ -54,10 +54,10 @@
     <script>
       // Instantiation
       var exampleButton = document.querySelector('[data-inclusive-menu-opens]')
-      var exampleMenuButton = new MenuButton(exampleButton, {check: 'many'})
+      var exampleMenuButton = new MenuButton(exampleButton, { checkable: 'many' })
 
       // Listen to choose event
-      exampleMenuButton.on('choose', function(choice) {
+      exampleMenuButton.on('choose', function (choice) {
         console.log('You chose "' + choice.textContent + '"')
       })
     </script>

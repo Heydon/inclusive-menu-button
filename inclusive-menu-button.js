@@ -4,22 +4,22 @@
   'use strict'
 
   // Constructor
-  function MenuButton (button, userSettings) {
-    // Error if the userSettings argument isn't an object
-    if (userSettings !== undefined && typeof userSettings !== 'object') {
+  function MenuButton (button, customSettings) {
+    // Error if the customSettings argument isn't an object
+    if (typeof customSettings !== 'undefined' && typeof customSettings !== 'object') {
       throw new Error('MenuButton\'s second argument is expected as an object or undefined')
     }
 
     // The default settings
     this.settings = {
-      check: 'none' // 'many' or 'none'
+      checkable: 'none'
     }
 
-    // Overwrite defaults where they are provided in userSettings
-    if (userSettings) {
-      for (var setting in userSettings) {
-        if (userSettings.hasOwnProperty(setting)) {
-          this.settings[setting] = userSettings[setting]
+    // Overwrite defaults where they are provided in customSettings
+    if (customSettings) {
+      for (var setting in customSettings) {
+        if (customSettings.hasOwnProperty(setting)) {
+          this.settings[setting] = customSettings[setting]
         }
       }
     }
@@ -90,9 +90,9 @@
       }
 
       // Add menu item semantics
-      if (this.settings.check === 'one') {
+      if (this.settings.checkable === 'one') {
         menuItem.setAttribute('role', 'menuitemradio')
-      } else if (this.settings.check === 'many') {
+      } else if (this.settings.checkable === 'many') {
         menuItem.setAttribute('role', 'menuitemcheckbox')
       } else {
         menuItem.setAttribute('role', 'menuitem')
@@ -191,7 +191,7 @@
   }
 
   MenuButton.prototype.choose = function (choice) {
-    if (this.settings.check === 'one') {
+    if (this.settings.checkable === 'one') {
       // Remove aria-checked from whichever item it's on
       Array.prototype.forEach.call(this.menuItems, function (menuItem) {
         menuItem.setAttribute('aria-checked', null)
@@ -201,7 +201,7 @@
       choice.setAttribute('aria-checked', 'true')
     }
 
-    if (this.settings.check === 'many') {
+    if (this.settings.checkable === 'many') {
       // check or uncheck item
       var checked = choice.getAttribute('aria-checked') === 'true' || false
       choice.setAttribute('aria-checked', !checked)

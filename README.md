@@ -102,11 +102,11 @@ const exampleMenuButton = new MenuButton(exampleButton)
 
 Sometimes you'd like to persist the selected menu item, using a checked state. WAI-ARIA provides `menuitemradio` (allowing the checking of just one item) and `menuitemcheckbox` (allowing the checking of multiple items). Checked items are marked with `aria-checked="true"`.
 
-You can supply the constructor with a `check` value of 'none' (default), 'one', or 'many'. In the following example, 'one' is chosen, implementing `menuitemradio`. See the examples folder for working demonstrations.
+You can supply the constructor with a `checkable` value of 'none' (default), 'one', or 'many'. In the following example, 'one' is chosen, implementing `menuitemradio`. See the examples folder for working demonstrations.
 
 ```js
 // Make it a menu button with menuitemradio buttons
-const exampleMenuButton = new MenuButton(exampleButton, {check: 'one'})
+const exampleMenuButton = new MenuButton(exampleButton, {checkable: 'one'})
 ```
 
 If you want to set default checked items, just do that in the HTML:
