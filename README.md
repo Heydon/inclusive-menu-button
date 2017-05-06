@@ -98,22 +98,24 @@ const exampleButton = document.querySelector('[data-opens-menu]')
 const exampleMenuButton = new MenuButton(exampleButton)
 ```
 
-### `menuitemradio` example
+### Checked items
 
-Sometimes you'd like to persist the selected menu item, using a checked state. In this case, the script should implement `role="menuitemradio"` in place of `role="menuitem"`, and apply `aria-checked="true"` to the most recently chosen item. On initialization, supply `radios: true` to the constructor call:
+Sometimes you'd like to persist the selected menu item, using a checked state. WAI-ARIA provides `menuitemradio` (allowing the checking of just one item) and `menuitemcheckbox` (allowing the checking of multiple items). Checked items are marked with `aria-checked="true"`.
+
+You can supply the constructor with a `check` value of 'none' (default), 'one', or 'many'. In the following example, 'one' is chosen, implementing `menuitemradio`. See the examples folder for working demonstrations.
 
 ```js
 // Make it a menu button with menuitemradio buttons
-const exampleMenuButton = new MenuButton(exampleButton, {radios: true})
+const exampleMenuButton = new MenuButton(exampleButton, {check: 'one'})
 ```
 
-If you want to set a default checked item, just do that in the HTML:
+If you want to set default checked items, just do that in the HTML:
 
 ```html
-<div id="difficulty" data-inclusive-menu-from="left" role="menu" hidden>
- <button role="menuitemradio" tabindex="-1">Easy</button>
- <button role="menuitemradio" aria-checked="true" tabindex="-1">Medium</button>
- <button role="menuitemradio" tabindex="-1">Incredibly Hard</button>
+<div id="difficulty" data-inclusive-menu-from="left">
+ <button>Easy</button>
+ <button aria-checked="true">Medium</button>
+ <button>Incredibly Hard</button>
 </div>
 ```
 

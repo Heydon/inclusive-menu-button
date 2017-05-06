@@ -25,43 +25,36 @@
       color: white;
     }
 
-    button:disabled {
-      color: #999;
-      background: #333;
-    }
-
     button:focus {
       outline: none;
       background-color: #3737c8;
     }
 
-    [data-inclusive-menu] [role="menuitem"] {
+    [data-inclusive-menu] [role^="menuitem"] {
       margin-top: 3px;
     }
     </style>
     <title>
-      Inclusive Menu Button | Disable Items Example
+      Inclusive Menu Button | menuitemcheckbox example
     </title>
   </head>
   <body>
     <div data-inclusive-menu>
-     <button data-inclusive-menu-opens="difficulty">
-       Difficulty
+     <button data-inclusive-menu-opens="typography">
+       Typography
        <span aria-hidden="true">&#x25be;</span>
      </button>
-     <div id="difficulty" data-inclusive-menu-from="left">
-       <button disabled>Easy</button>
-       <button>Medium</button>
-       <button disabled>Very Tricky</button>
-       <button>Incredibly Hard</button>
-       <button>Impossible</button>
+     <div id="typography" data-inclusive-menu-from="left">
+       <button>Ligatures</button>
+       <button>Drop caps</button>
+       <button>Hyphenation</button>
      </div>
     </div>
     <script src="../inclusive-menu-button.js"></script>
     <script>
       // Instantiation
       var exampleButton = document.querySelector('[data-inclusive-menu-opens]')
-      var exampleMenuButton = new MenuButton(exampleButton)
+      var exampleMenuButton = new MenuButton(exampleButton, {check: 'many'})
 
       // Listen to choose event
       exampleMenuButton.on('choose', function(choice) {

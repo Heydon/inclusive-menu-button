@@ -12,7 +12,7 @@
 
     // The default settings
     this.settings = {
-      radios: false
+      check: 'none' // 'many' or 'none'
     }
 
     // Overwrite defaults where they are provided in userSettings
@@ -90,8 +90,10 @@
       }
 
       // Add menu item semantics
-      if (this.settings.radios) {
+      if (this.settings.check === 'one') {
         menuItem.setAttribute('role', 'menuitemradio')
+      } else if (this.settings.check === 'many') {
+        menuItem.setAttribute('role', 'menuitemcheckbox')
       } else {
         menuItem.setAttribute('role', 'menuitem')
       }
@@ -189,7 +191,7 @@
   }
 
   MenuButton.prototype.choose = function (choice) {
-    if (this.settings.radios) {
+    if (this.settings.check === 'one') {
       // Remove aria-checked from whichever item it's on
       Array.prototype.forEach.call(this.menuItems, function (menuItem) {
         menuItem.setAttribute('aria-checked', null)
@@ -197,6 +199,12 @@
 
       // Set aria-checked="true" on the chosen item
       choice.setAttribute('aria-checked', 'true')
+    }
+
+    if (this.settings.check === 'many') {
+      // check or uncheck item
+      var checked = choice.getAttribute('aria-checked') === 'true' || false
+      choice.setAttribute('aria-checked', !checked)
     }
 
     // fire open event

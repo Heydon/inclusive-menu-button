@@ -35,7 +35,7 @@
     }
     </style>
     <title>
-      Inclusive Menu Button | Basic Example
+      Inclusive Menu Button | menuitemradio example
     </title>
   </head>
   <body>
@@ -56,7 +56,7 @@
     <script>
       // Instantiation
       var exampleButton = document.querySelector('[data-inclusive-menu-opens]')
-      var exampleMenuButton = new MenuButton(exampleButton, {radios: true})
+      var exampleMenuButton = new MenuButton(exampleButton, {check: 'one'})
 
       // Listen to choose event
       exampleMenuButton.on('choose', function(choice) {
