@@ -1,6 +1,6 @@
 {
   "name": "inclusive-menu-button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A menu button module that implements the correct ARIA semantics and keyboard behavior.",
   "main": "inclusive-menu-button.js",
   "scripts": {
