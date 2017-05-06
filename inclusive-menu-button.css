@@ -4,7 +4,7 @@
 }
 
 [data-inclusive-menu-opens],
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   text-align: left;
   border: 0;
 }
@@ -19,8 +19,12 @@
   right: 0;
 }
 
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   display: block;
   min-width: 100%;
   white-space: nowrap;
+}
+
+[data-inclusive-menu] [role^="menuitem"][aria-checked="true"]::before {
+  content: '\2713\0020';
 }

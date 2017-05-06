@@ -60,7 +60,7 @@ The following functional styling is provided for the basic layout of an archetyp
 }
 
 [data-inclusive-menu-opens],
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   text-align: left;
   border: 0;
 }
@@ -75,10 +75,14 @@ The following functional styling is provided for the basic layout of an archetyp
   right: 0;
 }
 
-[data-inclusive-menu] [role="menuitem"] {
+[data-inclusive-menu] [role^="menuitem"] {
   display: block;
   min-width: 100%;
   white-space: nowrap;
+}
+
+[data-inclusive-menu] [role^="menuitem"][aria-checked="true"]::before {
+  content: '\2713\0020';
 }
 ```
 
@@ -93,6 +97,29 @@ const exampleButton = document.querySelector('[data-opens-menu]')
 // Make it a menu button
 const exampleMenuButton = new MenuButton(exampleButton)
 ```
+
+### Checked items
+
+Sometimes you'd like to persist the selected menu item, using a checked state. WAI-ARIA provides `menuitemradio` (allowing the checking of just one item) and `menuitemcheckbox` (allowing the checking of multiple items). Checked items are marked with `aria-checked="true"`.
+
+You can supply the constructor with a `checkable` value of 'none' (default), 'one', or 'many'. In the following example, 'one' is chosen, implementing `menuitemradio`. See the examples folder for working demonstrations.
+
+```js
+// Make it a menu button with menuitemradio buttons
+const exampleMenuButton = new MenuButton(exampleButton, {checkable: 'one'})
+```
+
+If you want to set default checked items, just do that in the HTML:
+
+```html
+<div id="difficulty" data-inclusive-menu-from="left">
+ <button>Easy</button>
+ <button aria-checked="true">Medium</button>
+ <button>Incredibly Hard</button>
+</div>
+```
+
+The basic CSS (see above) prefixes the checked item with a check mark. This declaration can be removed safely and replaced with a different form of indication.
 
 ### API methods
 
@@ -131,7 +158,7 @@ The `choose` event is passed the chosen item’s DOM node.
 
 ```js
 exampleMenuButton.on('choose', function (choice) {
-  // Do something with `choice`
+  // Do something with `choice` DOM node
 })
 ```
 

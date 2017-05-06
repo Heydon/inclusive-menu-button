@@ -4,7 +4,26 @@
   'use strict'
 
   // Constructor
-  function MenuButton (button) {
+  function MenuButton (button, customSettings) {
+    // Error if the customSettings argument isn't an object
+    if (typeof customSettings !== 'undefined' && typeof customSettings !== 'object') {
+      throw new Error('MenuButton\'s second argument is expected as an object or undefined')
+    }
+
+    // The default settings
+    this.settings = {
+      checkable: 'none'
+    }
+
+    // Overwrite defaults where they are provided in customSettings
+    if (customSettings) {
+      for (var setting in customSettings) {
+        if (customSettings.hasOwnProperty(setting)) {
+          this.settings[setting] = customSettings[setting]
+        }
+      }
+    }
+
     // Save a reference to the element
     this.button = button
 
@@ -71,7 +90,13 @@
       }
 
       // Add menu item semantics
-      menuItem.setAttribute('role', 'menuitem')
+      if (this.settings.checkable === 'one') {
+        menuItem.setAttribute('role', 'menuitemradio')
+      } else if (this.settings.checkable === 'many') {
+        menuItem.setAttribute('role', 'menuitemcheckbox')
+      } else {
+        menuItem.setAttribute('role', 'menuitem')
+      }
 
       // Prevent tab focus on menu items
       menuItem.setAttribute('tabindex', '-1')
@@ -166,6 +191,22 @@
   }
 
   MenuButton.prototype.choose = function (choice) {
+    if (this.settings.checkable === 'one') {
+      // Remove aria-checked from whichever item it's on
+      Array.prototype.forEach.call(this.menuItems, function (menuItem) {
+        menuItem.setAttribute('aria-checked', null)
+      })
+
+      // Set aria-checked="true" on the chosen item
+      choice.setAttribute('aria-checked', 'true')
+    }
+
+    if (this.settings.checkable === 'many') {
+      // check or uncheck item
+      var checked = choice.getAttribute('aria-checked') === 'true' || false
+      choice.setAttribute('aria-checked', !checked)
+    }
+
     // fire open event
     this._fire('choose', choice)
 
