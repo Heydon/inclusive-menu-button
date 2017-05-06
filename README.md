@@ -158,7 +158,7 @@ The `choose` event is passed the chosen item’s DOM node.
 
 ```js
 exampleMenuButton.on('choose', function (choice) {
-  // Do something with `choice`
+  // Do something with `choice` DOM node
 })
 ```
 
@@ -169,5 +169,3 @@ There is an `off` method included for terminating event listeners.
 ```js
 exampleMenuButton.off('choose', exampleHandler)
 ```
-
-## Settings
