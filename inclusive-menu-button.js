@@ -34,7 +34,7 @@
     // exit with an error referencing the missing
     // menu's id
     if (!this.menu) {
-      throw new Error('#' + this.menuId + ' menu missing')
+      throw new Error('Element `#' + this.menuId + '` not found.')
     }
 
     // Add menu semantics
