@@ -168,7 +168,7 @@
     if (checked) {
       checked.focus()
     } else {
-      this.menu.querySelector(':not([disabled])').focus()
+      this.menu.querySelector('[role^="menuitem"]:not([disabled])').focus()
     }
 
     // fire open event
