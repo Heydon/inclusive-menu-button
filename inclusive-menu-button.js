@@ -171,6 +171,14 @@
       this.menu.querySelector('[role^="menuitem"]:not([disabled])').focus()
     }
 
+    this.outsideClick = function (e) {
+      if (!this.menu.contains(e.target) && !this.button.contains(e.target)) {
+        this.close()
+      }
+    }
+
+    document.addEventListener('click', this.outsideClick.bind(this))
+
     // fire open event
     this._fire('open')
 
