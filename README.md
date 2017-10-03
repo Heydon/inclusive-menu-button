@@ -92,7 +92,7 @@ Initialize the menu button / menu like so:
 
 ```js
 // get a menu button
-const exampleButton = document.querySelector('[data-opens-menu]')
+const exampleButton = document.querySelector('[data-inclusive-menu-opens]')
 
 // Make it a menu button
 const exampleMenuButton = new MenuButton(exampleButton)
