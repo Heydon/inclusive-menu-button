@@ -4,7 +4,7 @@
   'use strict'
 
   // Constructor
-  function MenuButton (button, options) {
+  function MenuButton(button, options) {
     options = options || {}
 
     // The default settings
@@ -58,7 +58,7 @@
       var goingDown = startItem === this.firstItem
 
       // helper function for getting next legitimate element
-      function move (elem) {
+      function move(elem) {
         return (goingDown ? elem.nextElementSibling : elem.previousElementSibling) || startItem
       }
 
@@ -174,8 +174,9 @@
     this.outsideClick = function (e) {
       if (!this.menu.contains(e.target) && !this.button.contains(e.target)) {
         this.close()
+        document.removeEventListener('click', this.outsideClick.bind(this))
       }
-    }
+    }.bind(this)
 
     document.addEventListener('click', this.outsideClick.bind(this))
 
@@ -206,7 +207,7 @@
     if (this.settings.checkable === 'one') {
       // Remove aria-checked from whichever item it's on
       Array.prototype.forEach.call(this.menuItems, function (menuItem) {
-        menuItem.setAttribute('aria-checked', null)
+        menuItem.removeAttribute('aria-checked');
       })
 
       // Set aria-checked="true" on the chosen item

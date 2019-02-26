@@ -1,6 +1,6 @@
 {
   "name": "inclusive-menu-button",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A menu button module that implements the correct ARIA semantics and keyboard behavior.",
   "main": "inclusive-menu-button.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "extract-version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
     "add-version": "echo \"/*! inclusive-menu-button $(npm run extract-version --silent) — © Heydon Pickering */\n$(cat inclusive-menu-button.min.js)\" > inclusive-menu-button.min.js",
     "build": "npm run uglify && npm run add-version",
-    "precommit": "npm run lint && npm run build"
+    "precommit": "npm run build"
   },
   "repository": {
     "type": "git",
